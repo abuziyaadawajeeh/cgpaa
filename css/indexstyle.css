@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+}
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid red;
+  width: 100vw;
+  justify-content: space-evenly;
+}
+.one {
+  max-width: 600px;
+  border: 2px solid red;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+
+  /* align-content: center; */
+}
+.forms {
+  display: flex;
+  border: 2px solid red;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
