@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+}
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid red;
+  align-items: center;
+}
+.service {
+  width: 100vh;
+  height: 500px;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.menu {
+  width: 33vw;
+  border: 1px solid red;
+  height: 100px;
+}
+.details {
+  width: 33vw;
+  border: 1px solid red;
+  height: 100px;
+}
+.logo {
+  width: 33vw;
+  border: 1px solid red;
+  height: 100px;
+}
