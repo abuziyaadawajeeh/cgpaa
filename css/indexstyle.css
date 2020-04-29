@@ -2,11 +2,6 @@
   margin: 0;
 }
 .divisions {
-  background-image: url(../images/skybg.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position-y: -300px;
   display: flex;
   flex-wrap: wrap-reverse;
   min-height: 80vh;
@@ -17,10 +12,11 @@
 .one {
   border: 1px solid red;
   display: inline;
+  max-width: 600px;
 }
 .signup,
 .login {
   border: 1px solid red;
   margin-bottom: 1rem;
-  padding: 2rem;
+  padding: 1rem;
 }
