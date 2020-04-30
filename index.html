@@ -45,12 +45,19 @@
         <button class="buttons">Login</button>
       </form>
       <button style="display: inline;" class="link1">Signup</button>
-      <form class="signup" style="display: none;" autocomplete="on">
+      <form
+        class="signup"
+        action="./php/signin.php"
+        style="display: none;"
+        autocomplete="on"
+        method="POST"
+      >
         <h4 class="labels">Institute Email Id</h4>
         <br />
         <input
           type="text"
           required
+          name="email"
           maxlength="22"
           size="22"
           pattern="((coe18b)|(ced18i))([0-9]{3})(@iiitdm.ac.in)"
@@ -59,28 +66,49 @@
         /><br />
         <h4 class="labels">Username</h4>
         <br />
-        <input type="text" required maxlength="20" placeholder="wajeeh" /><br />
+        <input
+          type="text"
+          required
+          maxlength="20"
+          name="username"
+          placeholder="wajeeh"
+        /><br />
         <h4 class="labels">Current CGPA</h4>
         <br />
         <input
           type="text"
           required
+          name="cgpa"
           pattern="^(([0-9]).([0-9]{2}))|(10.00)"
           placeholder="8.55"
           title="Ex: 8.72 or 10.00"
         /><br />
         <h4 class="labels">Password</h4>
         <br />
-        <input type="password" maxlength="20" required class="labels" /><br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          maxlength="20"
+          required
+          class="labels"
+        /><br />
         <h4 class="labels">Confirm Password</h4>
         <br />
-        <input required type="password" maxlength="20" class="labels" /><br />
-        <button class="buttons">Signup</button>
+        <input
+          required
+          type="password"
+          name="password1"
+          id="password1"
+          class="labels"
+          maxlength="20"
+        /><br />
+        <button type="submit" class="buttons">Signup</button>
       </form>
       <button class="link2" style="display: none;">Login</button>
     </div>
 
     <script src="jquery-3.5.0.js"></script>
-    <script src="codetrial.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

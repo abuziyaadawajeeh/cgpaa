@@ -32,3 +32,6 @@
   border: 1px solid red;
   height: 100px;
 }
+input {
+  text-align: center;
+}
