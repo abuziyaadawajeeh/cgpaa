@@ -26,7 +26,7 @@
           </p>
         </div>
       </div>
-      <form class="login">
+      <form class="login" action="php/login.php" method="POST">
         <h4 class="labels">Institute Email Id</h4>
         <br />
         <input
@@ -37,12 +37,13 @@
           maxlength="22"
           size="22"
           required
+          name="email"
         /><br />
         <h4 class="labels">Password</h4>
         <br />
-        <input type="password" maxlength="20" required /><br />
+        <input type="password" name="password" maxlength="20" required /><br />
         <a href="" class="links">Forgot my password..</a><br />
-        <button class="buttons">Login</button>
+        <button type="submit" class="buttons">Login</button>
       </form>
       <button style="display: inline;" class="link1">Signup</button>
       <form
