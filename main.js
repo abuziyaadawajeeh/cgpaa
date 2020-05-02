@@ -1,5 +1,6 @@
 $(document).ready(function () {
   var currentcgpa = 7.6;
+
   document.getElementById("gpanow").value = "9.0";
   document.getElementById("gpafuture").value = "9.0";
   document.getElementById("cgpa").value = "9.0";

@@ -5,7 +5,7 @@ if(!isset($_POST["submit"]));
 
 $email=$_POST["email"];
 $password=$_POST["password"];
-$query = "select email,password from main where email =?;";
+$query = "select email,password,username,cgpa from main where email =?;";
 include ("conn.php");
 $stmt=mysqli_stmt_init($conn);
 if(!mysqli_stmt_prepare($stmt, $query))
@@ -25,7 +25,12 @@ else
     if(!password_verify($password,$row["password"]))
         header("Location:../index.html?incorrectpassword");
     else
-        header("location:../index.html?loginsuccessful");
+    {
+        session_start();
+        $_SESSION["username"]=$row["username"];
+        $_SESSION["cgpa"]=$row["cgpa"];
+        header("location:../main.html?loginsuccessful&");
+    }
 }
 
 

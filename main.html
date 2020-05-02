@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["username"]))
+  header("Location:../index.html?loginproperly");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,8 +18,14 @@
     <div class="flexbox">
       <div class="dot details">
         <ul class="detailslist">
-          <li>Username</li>
-          <li>Current CGPA</li>
+          <li>Username : <?php
+                    echo $_SESSION["username"];
+                    ?></li>
+          
+          <li id="detailcgpa">Current CGPA : <?php
+                      echo $_SESSION["cgpa"];
+                    ?></li>
+          
           <li>Class Average CGPA</li>
           <li>Rank in Class</li>
         </ul>
@@ -51,6 +63,8 @@
         <button id="mybutton">animate</button>
       </div>
     </div>
-    <footer class="footer"></footer>
+    <footer class="footer">
+      
+    </footer>
   </body>
 </html>
