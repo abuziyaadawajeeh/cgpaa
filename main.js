@@ -1,8 +1,8 @@
 $(document).ready(function () {
-  var currentcgpa = 7.6;
+  var currentcgpa = document.getElementById("detailcgpa").innerHTML;
 
-  document.getElementById("gpanow").value = "9.0";
-  document.getElementById("gpafuture").value = "9.0";
+  document.getElementById("gpanow").value = (9 * 8 - currentcgpa * 3) / 5;
+  document.getElementById("gpafuture").value = (9 * 8 - currentcgpa * 3) / 5;
   document.getElementById("cgpa").value = "9.0";
 
   $("#cgpa").keyup(cgpaset);

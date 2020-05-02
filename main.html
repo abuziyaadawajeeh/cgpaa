@@ -22,9 +22,9 @@ if(!isset($_SESSION["username"]))
                     echo $_SESSION["username"];
                     ?></li>
           
-          <li id="detailcgpa">Current CGPA : <?php
+          <li>Current CGPA : <div id="detailcgpa"><?php
                       echo $_SESSION["cgpa"];
-                    ?></li>
+                    ?></div></li>
           
           <li>Class Average CGPA</li>
           <li>Rank in Class</li>
@@ -33,14 +33,14 @@ if(!isset($_SESSION["username"]))
       <div class="dot logo"></div>
       <div class="dot menu">
         <ul class="menulist">
-          <li>Logout</li>
-          <li>Edit CGPA</li>
-          <li>Change Username</li>
-          <li>Change Password</li>
+          <li><form action="./php/logout.php"><button type="submit" class="buttons"> Logout</button></form></li>
+          <li><button class="buttons">Edit CGPA</button></li>
+          <li><button class="buttons">Change Username</button></li>
+          <li><button class="buttons">Change Password</button></li>
         </ul>
       </div>
       <div class="dot service">
-        <form action="">
+        <form action="" autocomplete="off">
           Target GPA / Expected GPA for this Sem <br />
           <input id="gpanow"
             type="text"
