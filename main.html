@@ -22,19 +22,25 @@ if(!isset($_SESSION["username"]))
                     echo $_SESSION["username"];
                     ?></li>
           
-          <li>Current CGPA : <div id="detailcgpa"><?php
+          <li>Current CGPA : <div style="display: inline" id="detailcgpa"><?php
                       echo $_SESSION["cgpa"];
                     ?></div></li>
           
-          <li>Class Average CGPA</li>
-          <li>Rank in Class</li>
+          <li>No. of registered students : <?php echo $_SESSION["totalregistered"] ?></li>
+          <!-- <li>Your Rank in Class : <?php echo $_SESSION["classrank"] ?></li> -->
+          <li>No. of Nine-Pointers : <?php echo $_SESSION["ninepointers"] ?></li>
+          <li>No. of students between 8.5-9 : <?php echo $_SESSION["between8.5to9"] ?></li>
+          <li>No. of students between 8-8.5 : <?php echo $_SESSION["between8to8.5"]?></li>
+          <li>No. of students below 8 : <?php echo $_SESSION["below8"]?></li>
+          <li>Class Average CGPA : <?php echo $_SESSION["averagecgpa"] ?></li>
+    
         </ul>
       </div>
       <div class="dot logo"></div>
       <div class="dot menu">
         <ul class="menulist">
           <li><form action="./php/logout.php"><button type="submit" class="buttons"> Logout</button></form></li>
-          <li><button class="buttons">Edit CGPA</button></li>
+          <li><button class="buttons">Edit Current CGPA</button></li>
           <li><button class="buttons">Change Username</button></li>
           <li><button class="buttons">Change Password</button></li>
         </ul>
@@ -51,7 +57,7 @@ if(!isset($_SESSION["username"]))
           /><br />
           GPA required from each of the upcoming Sem <br />
           <input id="gpafuture"type="text" name="next" size="20" disabled /><br />
-          Target CGPA / CGPA after end of all Sems<br />
+          Target Final CGPA / CGPA after end of all Sems<br />
         
               <input id="cgpa" 
             type="text"
@@ -60,7 +66,7 @@ if(!isset($_SESSION["username"]))
             name="end"
             size="20"
           /><br />
-        <button id="mybutton">animate</button>
+        <div>Maximum Final CGPA possible for you  : <div style="display:inline" id="maxcgpa"></div></div>
       </div>
     </div>
     <footer class="footer">
