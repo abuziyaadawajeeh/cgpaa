@@ -10,8 +10,11 @@ $cgpa=$_POST["cgpa"];
 
 // to connect to the db
 include_once ("conn.php");
-if($conn->connect_error)
-    header("Location:../index.html?connectiontodbfailed1");
+if($conn->connect_error){
+        header("Location:../index.html?connectiontodbfailed1");
+        exit();
+}
+
 
 
 // before signup the user make sure that the email is not already registered with
@@ -47,8 +50,9 @@ if(!mysqli_stmt_prepare($stmt,$query))
     header("Location:../index.html?statementpreparationfailed");
 mysqli_stmt_bind_param($stmt,"ssds",$email,$username,$cgpa,$hashedpassword);
 mysqli_stmt_execute($stmt);
- 
-header("Location:../index.html?registrationsuccesful");
+
+if(!$conn->connect_error)
+    header("Location:../index.html?registrationsuccesful");
 
 
 //however email verification feature is left. 
