@@ -29,6 +29,6 @@ $(document).ready(function () {
     pwd = $("#password").val();
     pwd1 = $("#password1").val();
     if (pwd != pwd1) $("#password1").css("border", "2px solid red");
-    else $("#password1").css("border", "2px solid green");
+    else $("#password1").css("border", "4px solid green");
   }
 });

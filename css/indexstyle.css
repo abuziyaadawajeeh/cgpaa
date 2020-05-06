@@ -1,22 +1,70 @@
 * {
   margin: 0;
 }
+
 .divisions {
+  background-color: cadetblue;
   display: flex;
   flex-wrap: wrap-reverse;
-  min-height: 80vh;
+  /* min-height: 80vh; */
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid red;
+
+  min-height: calc(100vh - 5px);
 }
+.forms {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  /* align-items: flex-end; */
+
+  min-height: calc(100vh - 5px);
+}
+
 .one {
-  border: 1px solid red;
-  display: inline;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   max-width: 600px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-content: center; */
+  min-height: calc(100vh - 5px);
 }
+
 .signup,
 .login {
-  border: 1px solid red;
-  margin-bottom: 1rem;
-  padding: 1rem;
+  /* border: 1px solid rgb(3, 217, 255); */
+  /* margin-bottom: 1rem; */
+  padding: 2rem;
+  background-color: darkcyan;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px black, -3px -3px 10px black;
+}
+.signup > *,
+.login > * {
+  text-align: center;
+  line-height: 10px;
+}
+input {
+  border-radius: 2px;
+}
+br {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 2px;
+}
+button {
+  border-radius: 3px;
+  box-shadow: 3px 3px 10px black, -3px 0px 10px black;
+}
+#mydiv {
+  height: 5px;
+  background-image: linear-gradient(to right, black, rgb(0, 255, 255), black);
+}
+.bottomline {
+  height: 2px;
+  background-color: black;
+  margin-top: 10px;
 }
