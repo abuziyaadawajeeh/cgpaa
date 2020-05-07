@@ -77,6 +77,14 @@ else
         $result=mysqli_query($conn,$query);
         $_SESSION["totalregistered"]=mysqli_num_rows($result);
 
+        if(preg_match("/^(coe)/", $email))
+            $_SESSION["iscoe"]=".";
+        if(preg_match("/^(ced)/", $email))
+            $_SESSION["iscoe"]="";
+           
+        
+        
+
 
         header("location:../main.html?loginsuccessful");
     }

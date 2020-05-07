@@ -95,3 +95,46 @@ button {
   margin-right: 30%; */
   width: 100%;
 }
+.servicecont > input {
+  transform: scale(2, 2);
+}
+.menucont > .editcgpa > * {
+  margin-left: auto;
+  margin-right: auto;
+  /* align-items: center; */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.editcgpa > input {
+  color: black;
+  width: 100%;
+}
+
+/* style for edit username  */
+.menucont > .editusername > * {
+  margin-left: auto;
+  margin-right: auto;
+  /* align-items: center; */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.editusername > input {
+  color: black;
+  width: 100%;
+}
+
+/* style for change password  */
+.menucont > .editpassword > * {
+  margin-left: auto;
+  margin-right: auto;
+  /* align-items: center; */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.editpassword > input {
+  color: black;
+  width: 100%;
+}
