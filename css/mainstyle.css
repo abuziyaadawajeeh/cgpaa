@@ -1,17 +1,20 @@
 * {
   margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: white;
 }
 .flexbox {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  border: 1px solid red;
   align-items: center;
   justify-content: space-evenly;
+  min-height: 100vh;
+  background-color: rgb(0, 124, 103);
 }
 .service {
   height: 100vh;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,13 +28,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
   padding: 2rem;
   text-align: center;
 }
 
-input {
+input,
+button {
   text-align: center;
+  color: black;
+  border-radius: 0.2rem;
 }
 ul {
   list-style: none;
@@ -43,26 +48,50 @@ button {
 .menucont,
 .detailscont,
 .servicecont {
-  border: 1px solid red;
   min-width: 26vw;
-  min-height: 55vh;
-  box-sizing: border-box;
+  /* min-height: 55vh; */
+  padding: 2rem 0 2rem;
+  margin: 2rem 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: rgb(3, 99, 83);
+  box-shadow: 3px 3px 10px black, -3px -3px 10px black;
 }
+
 .detailscont > *,
 .menucont > *,
 .servicecont > * {
   margin-left: auto;
   margin-right: auto;
-  display: block;
+  align-items: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 .menucont {
   width: 300px;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 .servicecount > * {
   line-height: 1rem;
 }
 #logoutbutton {
   padding-top: 3rem;
+}
+.servicecont {
+  padding: 3rem 1rem 3rem;
+}
+.detailscont {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.menucont > * {
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 40%;
+}
+.menucont > form > button {
+  /* margin-left: 30%;
+  margin-right: 30%; */
+  width: 100%;
 }

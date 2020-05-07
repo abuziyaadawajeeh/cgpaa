@@ -16,7 +16,7 @@ if(!isset($_SESSION["username"]))
   </head>
   <body>
     <div class="flexbox">
-      <div class="dot details">
+      
         <div class="detailscont">
           <p>Username : <?php
                     echo $_SESSION["username"];
@@ -35,9 +35,9 @@ if(!isset($_SESSION["username"]))
           <p>Class Average CGPA : <?php echo $_SESSION["averagecgpa"] ?></p>
     
       
-        </div>
+        
       </div>
-      <div class="dot service">
+      
         <div class="servicecont">
           <form action="" autocomplete="off">
             Target GPA / Expected GPA for this Sem <br /><br>
@@ -52,17 +52,17 @@ if(!isset($_SESSION["username"]))
             <div>Maximum Final CGPA possible for you : <div style="display:inline" id="maxcgpa"></div>
           </form>
         </div>
-        </div>
+      
       </div>
-      <div class="dot menu">
+      
         <div class="menucont">
         
         <form action="./php/logout.php"><button type="submit" id="#logoutbutton" class="buttons"> Logout</button></form>
-        <button class="buttons">Edit Current CGPA</button>
-        <button class="buttons">Change Username</button>
+        <button class="buttons">Edit Current CGPA</button><br>
+        <button class="buttons">Change Username</button><br>
         <button class="buttons">Change Password</button>
         
-        </div>
+      
       </div>
       
     </div>
