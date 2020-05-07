@@ -13,7 +13,7 @@ $(document).ready(function () {
     document.getElementById("gpafuture").value = (9 * 10 - currentcgpa * 3) / 7;
     document.getElementById("cgpa").value = "9.0";
 
-    document.getElementById("maxcgpa").innerHTML = (currentcgpa * 3 + 50) / 10;
+    document.getElementById("maxcgpa").innerHTML = (currentcgpa * 3 + 70) / 10;
   }
 
   $("#cgpa").keyup(cgpaset);
