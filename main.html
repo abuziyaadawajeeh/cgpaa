@@ -17,57 +17,54 @@ if(!isset($_SESSION["username"]))
   <body>
     <div class="flexbox">
       <div class="dot details">
-        <ul class="detailslist">
-          <li>Username : <?php
+        <div class="detailscont">
+          <p>Username : <?php
                     echo $_SESSION["username"];
-                    ?></li>
+                    ?></p>
           
-          <li>Current CGPA : <div style="display: inline" id="detailcgpa"><?php
+          <p>Current CGPA : <div id="detailcgpa"><?php
                       echo $_SESSION["cgpa"];
-                    ?></div></li>
+                    ?></div></p>
           
-          <li>No. of registered students : <?php echo $_SESSION["totalregistered"] ?></li>
-          <!-- <li>Your Rank in Class : <?php echo $_SESSION["classrank"] ?></li> -->
-          <li>No. of Nine-Pointers : <?php echo $_SESSION["ninepointers"] ?></li>
-          <li>No. of students between 8.5-9 : <?php echo $_SESSION["between8.5to9"] ?></li>
-          <li>No. of students between 8-8.5 : <?php echo $_SESSION["between8to8.5"]?></li>
-          <li>No. of students below 8 : <?php echo $_SESSION["below8"]?></li>
-          <li>Class Average CGPA : <?php echo $_SESSION["averagecgpa"] ?></li>
+          <p>No. of registered students : <?php echo $_SESSION["totalregistered"] ?></p>
+          <!-- <p>Your Rank in Class : <?php echo $_SESSION["classrank"] ?></p> -->
+          <p>No. of Nine-Pointers : <?php echo $_SESSION["ninepointers"] ?></p>
+          <p>No. of students between 8.5-9 : <?php echo $_SESSION["between8.5to9"] ?></p>
+          <p>No. of students between 8-8.5 : <?php echo $_SESSION["between8to8.5"]?></p>
+          <p>No. of students below 8 : <?php echo $_SESSION["below8"]?></p>
+          <p>Class Average CGPA : <?php echo $_SESSION["averagecgpa"] ?></p>
     
-        </ul>
-      </div>
-      <div class="dot logo"></div>
-      <div class="dot menu">
-        <ul class="menulist">
-          <li><form action="./php/logout.php"><button type="submit" class="buttons"> Logout</button></form></li>
-          <li><button class="buttons">Edit Current CGPA</button></li>
-          <li><button class="buttons">Change Username</button></li>
-          <li><button class="buttons">Change Password</button></li>
-        </ul>
+      
+        </div>
       </div>
       <div class="dot service">
-        <form action="" autocomplete="off">
-          Target GPA / Expected GPA for this Sem <br />
-          <input id="gpanow"
-            type="text"
-            pattern="^((10)|([0-9])|([0-9]\.[0-9]{2})|([0-9].[0-9]))$"
-            title="Enter a valid GPA Ex: 7, 8.9, 9.13"
-            name="this"
-            size="20"
-          /><br />
-          GPA required from each of the upcoming Sem <br />
-          <input id="gpafuture"type="text" name="next" size="20" disabled /><br />
-          Target Final CGPA / CGPA after end of all Sems<br />
+        <div class="servicecont">
+          <form action="" autocomplete="off">
+            Target GPA / Expected GPA for this Sem <br /><br>
+            <input id="gpanow" type="text" pattern="^((10)|([0-9])|([0-9]\.[0-9]{2})|([0-9].[0-9]))$"
+              title="Enter a valid GPA Ex: 7, 8.9, 9.13" name="this" size="20" /><br /><br>
+            GPA required from each of the upcoming Sem <br /><br>
+            <input id="gpafuture" type="text" name="next" size="20" disabled /><br /><br>
+            Target Final CGPA / CGPA after end of all Sems<br /><br>
         
-              <input id="cgpa" 
-            type="text"
-            pattern="^((10)|([0-9])|([0-9]\.[0-9]{2})|([0-9].[0-9]))$"
-            title="Enter a valid GPA Ex: 7, 8.9, 9.13"
-            name="end"
-            size="20"
-          /><br />
-        <div>Maximum Final CGPA possible for you  : <div style="display:inline" id="maxcgpa"></div></div>
+            <input id="cgpa" type="text" pattern="^((10)|([0-9])|([0-9]\.[0-9]{2})|([0-9].[0-9]))$"
+              title="Enter a valid GPA Ex: 7, 8.9, 9.13" name="end" size="20" /><br /><br>
+            <div>Maximum Final CGPA possible for you : <div style="display:inline" id="maxcgpa"></div>
+          </form>
+        </div>
+        </div>
       </div>
+      <div class="dot menu">
+        <div class="menucont">
+        
+        <form action="./php/logout.php"><button type="submit" id="#logoutbutton" class="buttons"> Logout</button></form>
+        <button class="buttons">Edit Current CGPA</button>
+        <button class="buttons">Change Username</button>
+        <button class="buttons">Change Password</button>
+        
+        </div>
+      </div>
+      
     </div>
     <footer class="footer">
       

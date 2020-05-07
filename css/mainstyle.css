@@ -4,34 +4,65 @@
 .flexbox {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
   border: 1px solid red;
   align-items: center;
+  justify-content: space-evenly;
 }
 .service {
-  width: 100vh;
-  height: 500px;
+  height: 100vh;
   border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 2rem;
 }
-.menu {
-  width: 33vw;
-  border: 1px solid red;
-  height: 100px;
-}
+.menu,
 .details {
-  width: 33vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 1px solid red;
-  height: 100px;
+  padding: 2rem;
+  text-align: center;
 }
-.logo {
-  width: 33vw;
-  border: 1px solid red;
-  height: 100px;
-}
+
 input {
   text-align: center;
+}
+ul {
+  list-style: none;
+}
+button {
+  width: 9rem;
+}
+
+.menucont,
+.detailscont,
+.servicecont {
+  border: 1px solid red;
+  min-width: 26vw;
+  min-height: 55vh;
+  box-sizing: border-box;
+}
+.detailscont > *,
+.menucont > *,
+.servicecont > * {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.menucont {
+  width: 300px;
+}
+.servicecount > * {
+  line-height: 1rem;
+}
+#logoutbutton {
+  padding-top: 3rem;
 }
