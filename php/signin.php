@@ -34,9 +34,16 @@ mysqli_stmt_store_result($stmt2);
 
 $count = mysqli_stmt_num_rows($stmt2);
 
-if($count>0)
+if($count>0){
     header("Location:../index.html?emailalreadyregistered");
+    exit();
+}
 mysqli_stmt_close($stmt2);
+
+if($password != $password1){
+    header("Location:../index.html?passwordsdonotmatch");
+    exit();
+}
 
 
 $hashedpassword= password_hash($password, PASSWORD_DEFAULT);
@@ -46,8 +53,10 @@ $query="insert into main (email,username, cgpa, password) values(?,?,?,?);";
 
 //to execute a prepared statement
 $stmt = mysqli_stmt_init($conn);
-if(!mysqli_stmt_prepare($stmt,$query))
+if(!mysqli_stmt_prepare($stmt,$query)){
     header("Location:../index.html?statementpreparationfailed");
+    exit();
+}
 mysqli_stmt_bind_param($stmt,"ssds",$email,$username,$cgpa,$hashedpassword);
 mysqli_stmt_execute($stmt);
 
