@@ -14,6 +14,10 @@ $(document).ready(function () {
     document.getElementById("cgpa").value = "9.0";
 
     document.getElementById("maxcgpa").innerHTML = (currentcgpa * 3 + 70) / 10;
+  } else if (iscoe == ",") {
+    // to check if it is a guest user.
+    $(".vanish").hide();
+    $("#guestbox").show();
   }
 
   $("#cgpa").keyup(cgpaset);
@@ -35,9 +39,10 @@ $(document).ready(function () {
       var requiredgpas = (cgpa * 8 - currentcgpa * 3 - gpanow) / 4;
     var requiredgpas = (cgpa * 10 - currentcgpa * 3 - gpanow) / 6;
     document.getElementById("gpafuture").value = requiredgpas;
-    if (iscoe == ".") var formula = (currentcgpa * 3 + gpanow + 40) / 8;
-    else if (iscoe == "") var formula = (currentcgpa * 3 + gpanow + 60) / 10;
-    document.getElementById("maxcgpa").innerText = formula;
+    if (iscoe == ".") {
+      var formula = (currentcgpa * 3 + gpanow + 40) / 8;
+      document.getElementById("maxcgpa").innerText = formula;
+    } else if (iscoe == "") var formula = (currentcgpa * 3 + gpanow + 60) / 10;
   }
 
   // to show and hide editcurrent cgpa elements

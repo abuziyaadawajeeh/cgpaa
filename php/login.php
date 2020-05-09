@@ -1,8 +1,9 @@
 <?php
 
 if(empty($_POST["mybutton"])){
-    header("Location:../index.html?accessdenied");
-    exit();
+    session_start();
+    $_SESSION["isguest"]=true;
+    goto there;
 
 }
 
@@ -28,11 +29,14 @@ else
 {
     if(!password_verify($password,$row["password"]))
         header("Location:../index.html?incorrectpassword");
-    else
-    {
+    else{
         session_start();
         $_SESSION["username"]=$row["username"];
         $_SESSION["cgpa"]=$row["cgpa"];
+
+        there: 
+        include ("conn.php");
+
 
         // get class average
         $query = "select avg(cgpa) from main;";
@@ -77,16 +81,18 @@ else
         $result=mysqli_query($conn,$query);
         $_SESSION["totalregistered"]=mysqli_num_rows($result);
 
+        if(isset($_SESSION["cgpa"])){
+
         if(preg_match("/^(coe)/", $email))
             $_SESSION["iscoe"]=".";
         if(preg_match("/^(ced)/", $email))
             $_SESSION["iscoe"]="";
-           
+        }
         
         
 
 
-        header("location:../main.html?loginsuccessful");
+        header("location:../main.html?loginsuccessful?");
     }
 }
 
