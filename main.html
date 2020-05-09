@@ -1,6 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION["username"]))
+if(isset($_SESSION["isguest"]));
+else if(!isset($_SESSION["username"]))
   header("Location:../index.html?loginproperly");
 ?>
 
@@ -19,15 +20,22 @@ if(!isset($_SESSION["username"]))
       <!-- flex item 1 for the details of the class -->
       
         <div class="detailscont">
-          <p>Username : <?php
-                    echo $_SESSION["username"];
+          <p>Username : <?php 
+                    if(isset($_SESSION["isguest"]))
+                      echo "guest";
+                    else echo $_SESSION["username"];
                     ?></p>
           
           <p>Current CGPA : <div id="detailcgpa"><?php
-                      echo $_SESSION["cgpa"];
+                     if(isset($_SESSION["isguest"]))
+                      echo "--";
+                      else echo $_SESSION["cgpa"];
                     ?></div></p>
           
-          <p>No. of registered students<span id="iscoe"><?php echo $_SESSION["iscoe"] ?></span> : <?php echo $_SESSION["totalregistered"] ?></p>
+          <p>No. of registered students<span id="iscoe"><?php 
+             if(isset($_SESSION["isguest"]))
+                      echo ",";
+            else echo $_SESSION["iscoe"] ?></span> : <?php echo $_SESSION["totalregistered"] ?></p>
           <!-- <p>Your Rank in Class : <?php echo $_SESSION["classrank"] ?></p> -->
           <p>No. of Nine-Pointers : <?php echo $_SESSION["ninepointers"] ?></p>
           <p>No. of students between 8.5-9 : <?php echo $_SESSION["between8.5to9"] ?></p>
@@ -65,11 +73,11 @@ if(!isset($_SESSION["username"]))
         <button id="vanishpassword" class="vanish">Change Password</button>
 
           <!-- to change cgpa -->
-        <form style="display: none" action="" class="editcgpa" autocomplete="off">
+        <form style="display: none" action="" class="editcgpa" autocomplete="off" method="POST">
           <p>Enter your current CGPA : </p>
-          <input type="text" required name="cgpa" pattern="^(([0-9]).([0-9]{2}))|(10.00)" placeholder="8.55"
+          <input type="text" required name="cgpa" id="newcgpa" pattern="^(([0-9]).([0-9]{2}))|(10.00)" placeholder="8.55"
             title="Ex: 8.72 or 10.00" />
-          <button type="submit">Edit</button><br>
+          <button id="newcgpabutton" type="submit">Edit</button><br>
           <button id="cancelcgpa" >Cancel</button>
         </form>
 
@@ -104,6 +112,7 @@ if(!isset($_SESSION["username"]))
       
     </div>
     <footer class="footer">
+
       
     </footer>
   </body>

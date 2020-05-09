@@ -107,4 +107,21 @@ $(document).ready(function () {
     if (pwd != pwd1) $("#password1").css("border", "2px solid red");
     else $("#password1").css("border", "4px solid green");
   }
+
+  // ajax code to handle edit details opertations
+
+  document.getElementById("newcgpabutton").addEventListener("click", ajaxcgpa);
+
+  function ajaxcgpa() {
+    var newcgpa = document.getElementById("newcgpa").value;
+    document.getElementsByClassName("footer").innerHTML = newcgpa;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementsByClassName("footer").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "../php/updatedetails.php?q=" + newcgpa, true);
+    xmlhttp.send();
+  }
 });

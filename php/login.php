@@ -1,8 +1,9 @@
 <?php
 
 if(empty($_POST["mybutton"])){
-    header("Location:../index.html?accessdenied");
-    exit();
+    session_start();
+    $_SESSION["isguest"]=true;
+    goto there;
 
 }
 
@@ -10,6 +11,11 @@ $email=$_POST["email"];
 $password=$_POST["password"];
 $query = "select email,password,username,cgpa from main where email =?;";
 include ("conn.php");
+if($conn->error)
+{
+    header("Location:../index.html?dbconnerror");
+    exit();
+}
 $stmt=mysqli_stmt_init($conn);
 if(!mysqli_stmt_prepare($stmt, $query))
     header("location:../index.html?stmtpreparationfailed");
@@ -34,6 +40,8 @@ else
         $_SESSION["username"]=$row["username"];
         $_SESSION["cgpa"]=$row["cgpa"];
 
+        there: 
+        include ("conn.php");
         // get class average
         $query = "select avg(cgpa) from main;";
         $result = mysqli_query($conn, $query);
@@ -76,6 +84,10 @@ else
         $query = "SELECT email from main;";
         $result=mysqli_query($conn,$query);
         $_SESSION["totalregistered"]=mysqli_num_rows($result);
+
+
+        if($_SESSION["isuser"]==true)
+            header("location:../main.html?guestloginsuccessful");
 
         if(preg_match("/^(coe)/", $email))
             $_SESSION["iscoe"]=".";
