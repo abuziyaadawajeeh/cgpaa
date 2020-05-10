@@ -11,6 +11,11 @@ $email=$_POST["email"];
 $password=$_POST["password"];
 $query = "select email,password,username,cgpa from main where email =?;";
 include ("conn.php");
+if($conn->error)
+{
+    header("Location:../index.html?dbconnerror");
+    exit();
+}
 $stmt=mysqli_stmt_init($conn);
 if(!mysqli_stmt_prepare($stmt, $query))
     header("location:../index.html?stmtpreparationfailed");

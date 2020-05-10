@@ -1,6 +1,11 @@
 <?php
 session_start();
+<<<<<<< HEAD
 if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
+=======
+if(isset($_SESSION["isguest"]));
+else if(!isset($_SESSION["username"]))
+>>>>>>> 2b55512c29864c7607c505fde8cd00933237095d
   header("Location:../index.html?loginproperly");
 ?>
 
@@ -76,11 +81,11 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
         <button id="vanishpassword" class="vanish">Change Password</button>
 
           <!-- to change cgpa -->
-        <form style="display: none" action="" class="editcgpa" autocomplete="off">
+        <form style="display: none" action="" class="editcgpa" autocomplete="off" method="POST">
           <p>Enter your current CGPA : </p>
-          <input type="text" required name="cgpa" pattern="^(([0-9]).([0-9]{2}))|(10.00)" placeholder="8.55"
+          <input type="text" required name="cgpa" id="newcgpa" pattern="^(([0-9]).([0-9]{2}))|(10.00)" placeholder="8.55"
             title="Ex: 8.72 or 10.00" />
-          <button type="submit">Edit</button><br>
+          <button id="newcgpabutton" type="submit">Edit</button><br>
           <button id="cancelcgpa" >Cancel</button>
         </form>
 
