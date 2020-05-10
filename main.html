@@ -20,20 +20,20 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
       
         <div class="detailscont">
           <p>Username : <?php
-                    if(isset($_SESSION["isguest"]))
+                    if($_SESSION["isguest"])
                       echo "guest";
                     else echo $_SESSION["username"];
                     ?></p>
           
           <p>Current CGPA : <div id="detailcgpa"><?php
-                      if(isset($_SESSION["isguest"]))
+                      if($_SESSION["isguest"])
                       echo "--";
                     else
                       echo $_SESSION["cgpa"];
                     ?></div></p>
           
           <p>No. of registered students<span id="iscoe"><?php 
-            if(isset($_SESSION["isguest"]))
+            if($_SESSION["isguest"])
             echo ",";
             else 
             echo $_SESSION["iscoe"]; ?></span> : <?php echo $_SESSION["totalregistered"] ?></p>
@@ -103,14 +103,15 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
           <button id="cancelpassword">Cancel</button>
         </form>
 
-        <div style="display:none" id="guestbox">
+        <form style="display:none" id="guestbox">
         <div>Enter the Current CGPA</div><br>
-        <input type="text" size=20 autofocus id="guestcgpa"> <br><br>
+        <input required type="text" size=17 pattern="^(([0-9]).([0-9]{2}))|(10.00)" autofocus id="guestcgpa"> <br><br>
         <div>Total no. of Sems</div><br>
-        <input type="text" size=20 ><br><br>
+        <input  id="guesttotalsems" required type="text" size=17 ><br><br>
         <div>No. of Sems completed</div><br>
-        <input type="text" size=20><br> <br>
-        </div>
+        <input id="guestcompsems" required type="text" size=17><br> <br>
+        <button value ="set" id="guestbutton" >Activate CGPAA</button>
+        </form>
 
 
         
@@ -124,7 +125,23 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
       </div>
       
     </div>
-    <footer class="footer">
+    <footer id="about">
+      <h3>About CGPAA</h3>
+      <br />
+    
+      <div>
+        We are a group of students from IIITDM Kanchipuram pursuing a degree in
+        Computer Science. We are from the batch of 2018 and as a part of our
+        DBMS course, we were assigned with the task of learning Web Development
+        languages and building a Full Stack App. So we created CGPAA to make the
+        life of students a lot easier when it comes to analysing CGPA or GPAs.
+        As for the front end, we used HTML, CSS and JS. As for the main service
+        we provide, which is a dynamic CGPA analyser , it is run by Java Script.
+        As for the rest of the Backend tasks, we are using PHP along with Mysql
+        DB .
+      </div>
+      <br />
+      <a id="down" href="">Have a look at the team behind CGPAA !</a>
     </footer>
   </body>
 </html>

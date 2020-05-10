@@ -1,10 +1,10 @@
 * {
   margin: 0;
+}
+.flexbox {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   color: white;
-}
-.flexbox {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -12,6 +12,7 @@
   justify-content: space-evenly;
   min-height: 100vh;
   background-color: rgb(0, 124, 103);
+  width: 100vw;
 }
 .service {
   height: 100vh;
@@ -140,6 +141,34 @@ button {
 }
 
 .footer {
-  background-image: linear-gradient(to right, black, white, black);
-  height: 7px;
+  background-image: linear-gradient(to right, black, rgb(28, 122, 9), black);
+  height: 5px;
+}
+.guestbox > * {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#about {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+  color: rgb(153, 158, 158);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow: hidden;
+  /* margin: 1rem 0.5rem 1rem; */
+  box-shadow: 3px 3px 10px black, -3px -3px 10px black;
+}
+a {
+  color: rgb(0, 0, 0);
+}
+#about > a {
+  color: rgb(153, 158, 158);
 }

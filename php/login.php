@@ -32,6 +32,8 @@ else
     else{
         session_start();
         $_SESSION["username"]=$row["username"];
+        $_SESSION["isguest"] = false;
+
         $_SESSION["cgpa"]=$row["cgpa"];
 
         there: 
@@ -84,7 +86,9 @@ else
         if(isset($_SESSION["cgpa"])){
 
         if(preg_match("/^(coe)/", $email))
-            $_SESSION["iscoe"]=".";
+        {   $_SESSION["iscoe"]=".";
+            
+        }
         if(preg_match("/^(ced)/", $email))
             $_SESSION["iscoe"]="";
         }
@@ -92,7 +96,7 @@ else
         
 
 
-        header("location:../main.html?loginsuccessful?");
+        header("location:../main.html?loginsuccessful?".$_SESSION["username"]."&".$_SESSION["isguest"]."");
     }
 }
 

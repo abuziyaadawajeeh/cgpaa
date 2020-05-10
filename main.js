@@ -1,32 +1,89 @@
 $(document).ready(function () {
-  var currentcgpa = document.getElementById("detailcgpa").innerHTML;
+  var currentcgpa;
+  var totalsems;
+  var semscompleted;
+  var requiredgpas;
+  var semsremaining;
+
+  currentcgpa = document.getElementById("detailcgpa").innerHTML;
   var iscoe = document.getElementById("iscoe").innerHTML;
 
   if (iscoe == ".") {
-    document.getElementById("gpanow").value = (9 * 8 - currentcgpa * 3) / 5;
-    document.getElementById("gpafuture").value = (9 * 8 - currentcgpa * 3) / 5;
+    currentcgpa = document.getElementById("detailcgpa").innerHTML;
+    totalsems = 8;
+    semscompleted = 3;
+    semsremaining = totalsems - semscompleted - 1;
+    document.getElementById("gpanow").value =
+      (9 * totalsems - currentcgpa * semscompleted) /
+      (totalsems - semscompleted);
+    document.getElementById("gpafuture").value =
+      (9 * totalsems - currentcgpa * semscompleted) /
+      (totalsems - semscompleted);
     document.getElementById("cgpa").value = "9.0";
 
-    document.getElementById("maxcgpa").innerHTML = (currentcgpa * 3 + 50) / 8;
+    document.getElementById("maxcgpa").innerHTML =
+      (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
+      totalsems;
   } else if (iscoe == "") {
-    document.getElementById("gpanow").value = (9 * 10 - currentcgpa * 3) / 7;
-    document.getElementById("gpafuture").value = (9 * 10 - currentcgpa * 3) / 7;
+    currentcgpa = document.getElementById("detailcgpa").innerHTML;
+    totalsems = 10;
+    semscompleted = 3;
+    semsremaining = totalsems - semscompleted - 1;
+
+    document.getElementById("gpanow").value =
+      (9 * totalsems - currentcgpa * semscompleted) /
+      (totalsems - semscompleted);
+    document.getElementById("gpafuture").value =
+      (9 * totalsems - currentcgpa * semscompleted) /
+      (totalsems - semscompleted);
     document.getElementById("cgpa").value = "9.0";
 
-    document.getElementById("maxcgpa").innerHTML = (currentcgpa * 3 + 70) / 10;
+    document.getElementById("maxcgpa").innerHTML =
+      (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
+      totalsems;
   } else if (iscoe == ",") {
     // to check if it is a guest user.
     $(".vanish").hide();
     $("#guestbox").show();
+    totalsems = 8;
+    semscompleted = 3;
+    currentcgpa = 8.9;
+    semsremaining = totalsems - semscompleted - 1;
+    document.getElementById("gpanow").value =
+      (9 * totalsems - currentcgpa * semscompleted) /
+      (totalsems - semscompleted);
+    document.getElementById("gpafuture").value =
+      (9 * totalsems - currentcgpa * semscompleted) /
+      (totalsems - semscompleted);
+    document.getElementById("cgpa").value = "9.0";
+
+    document.getElementById("maxcgpa").innerHTML =
+      (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
+      totalsems;
   }
+
+  $("#guestbutton").click(function () {
+    totalsems = document.getElementById("guesttotalsems").value;
+    semscompleted = document.getElementById("guestcompsems").value;
+    currentcgpa = document.getElementById("guestcgpa").value;
+
+    // var cgpa = document.getElementById("cgpa").value;
+    // requiredgpas =
+    //   (cgpa * totalsems - currentcgpa * semscompleted) /
+    //   (totalsems - semscompleted);
+    // console.log("here");
+    // document.getElementById("gpanow").value = requiredgpas;
+    // document.getElementById("gpafuture").value = requiredgpas;
+  });
 
   $("#cgpa").keyup(cgpaset);
   $("#gpanow").keyup(gpaset);
 
   function cgpaset() {
     var cgpa = document.getElementById("cgpa").value;
-    if (iscoe == ".") var requiredgpas = (cgpa * 8 - currentcgpa * 3) / 5;
-    else if (iscoe == "") var requiredgpas = (cgpa * 10 - currentcgpa * 3) / 7;
+    requiredgpas =
+      (cgpa * totalsems - currentcgpa * semscompleted) /
+      (totalsems - semscompleted);
 
     document.getElementById("gpanow").value = requiredgpas;
     document.getElementById("gpafuture").value = requiredgpas;
@@ -35,16 +92,17 @@ $(document).ready(function () {
   function gpaset() {
     var gpanow = document.getElementById("gpanow").value;
     var cgpa = document.getElementById("cgpa").value;
-    if (iscoe == ".")
-      var requiredgpas = (cgpa * 8 - currentcgpa * 3 - gpanow) / 4;
-    var requiredgpas = (cgpa * 10 - currentcgpa * 3 - gpanow) / 6;
+    requiredgpas =
+      (cgpa * totalsems - currentcgpa * semscompleted - gpanow) / semsremaining;
+
     document.getElementById("gpafuture").value = requiredgpas;
-    if (iscoe == ".") {
-      var formula = (currentcgpa * 3 + gpanow + 40) / 8;
-      document.getElementById("maxcgpa").innerText = formula;
-    } else if (iscoe == "") var formula = (currentcgpa * 3 + gpanow + 60) / 10;
+    // to update maximum possible cgpa
+    var formula =
+      (currentcgpa * semscompleted + gpanow + semsremaining * 10) / totalsems;
+    document.getElementById("maxcgpa").innerText = formula;
   }
 
+  // =============================================
   // to show and hide editcurrent cgpa elements
   $("#vanishcgpa").click(reverteditcgpa1);
   $("#cancelcgpa").click(reverteditcgpa);
