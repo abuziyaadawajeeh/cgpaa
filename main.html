@@ -1,11 +1,6 @@
 <?php
 session_start();
-<<<<<<< HEAD
 if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
-=======
-if(isset($_SESSION["isguest"]));
-else if(!isset($_SESSION["username"]))
->>>>>>> 2b55512c29864c7607c505fde8cd00933237095d
   header("Location:../index.html?loginproperly");
 ?>
 
