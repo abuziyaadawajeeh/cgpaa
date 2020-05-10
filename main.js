@@ -21,9 +21,11 @@ $(document).ready(function () {
       (totalsems - semscompleted);
     document.getElementById("cgpa").value = "9.0";
 
-    document.getElementById("maxcgpa").innerHTML =
+    prevmaxcgpa =
       (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
       totalsems;
+
+    document.getElementById("maxcgpa").innerHTML = prevmaxcgpa;
   } else if (iscoe == "") {
     currentcgpa = document.getElementById("detailcgpa").innerHTML;
     totalsems = 10;
@@ -38,9 +40,11 @@ $(document).ready(function () {
       (totalsems - semscompleted);
     document.getElementById("cgpa").value = "9.0";
 
-    document.getElementById("maxcgpa").innerHTML =
+    prevmaxcgpa =
       (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
       totalsems;
+
+    document.getElementById("maxcgpa").innerHTML = prevmaxcgpa;
   } else if (iscoe == ",") {
     // to check if it is a guest user.
     $(".vanish").hide();
@@ -48,6 +52,9 @@ $(document).ready(function () {
     totalsems = 8;
     semscompleted = 3;
     currentcgpa = 8.9;
+    document.getElementById("guesttotalsems").value = "8";
+    document.getElementById("guestcompsems").value = "3";
+    document.getElementById("guestcgpa").value = "8.9";
     semsremaining = totalsems - semscompleted - 1;
     document.getElementById("gpanow").value =
       (9 * totalsems - currentcgpa * semscompleted) /
@@ -57,9 +64,11 @@ $(document).ready(function () {
       (totalsems - semscompleted);
     document.getElementById("cgpa").value = "9.0";
 
-    document.getElementById("maxcgpa").innerHTML =
+    prevmaxcgpa =
       (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
       totalsems;
+
+    document.getElementById("maxcgpa").innerHTML = prevmaxcgpa;
   }
 
   $("#guestbutton").click(function () {
@@ -79,8 +88,17 @@ $(document).ready(function () {
   $("#cgpa").keyup(cgpaset);
   $("#gpanow").keyup(gpaset);
 
+  $("#guestcgpa").keyup(cgpaset);
+  $("#guestcompsems").keyup(cgpaset);
+  $("#guesttotalsems").keyup(cgpaset);
+
   function cgpaset() {
     var cgpa = document.getElementById("cgpa").value;
+    if (iscoe == ",") {
+      totalsems = document.getElementById("guesttotalsems").value;
+      semscompleted = document.getElementById("guestcompsems").value;
+      currentcgpa = document.getElementById("guestcgpa").value;
+    }
     requiredgpas =
       (cgpa * totalsems - currentcgpa * semscompleted) /
       (totalsems - semscompleted);
@@ -92,10 +110,44 @@ $(document).ready(function () {
   function gpaset() {
     var gpanow = document.getElementById("gpanow").value;
     var cgpa = document.getElementById("cgpa").value;
+    if (iscoe == ",") {
+      totalsems = document.getElementById("guesttotalsems").value;
+      semscompleted = document.getElementById("guestcompsems").value;
+      currentcgpa = document.getElementById("guestcgpa").value;
+      semsremaining = totalsems - semscompleted - 1;
+    }
     requiredgpas =
       (cgpa * totalsems - currentcgpa * semscompleted - gpanow) / semsremaining;
 
     document.getElementById("gpafuture").value = requiredgpas;
+    prevmaxcgpa =
+      (currentcgpa * semscompleted + gpanow + semsremaining * 10) / totalsems;
+
+    document.getElementById("maxcgpa").innerHTML = prevmaxcgpa;
+  }
+
+  function maximumcgpa() {
+    var gpanow = document.getElementById("gpanow").value;
+    if (iscoe == ".") {
+      currentcgpa = document.getElementById("detailcgpa").innerHTML;
+      totalsems = 8;
+      semscompleted = 3;
+      semsremaining = totalsems - semscompleted - 1;
+    }
+    if (iscoe == "") {
+      currentcgpa = document.getElementById("detailcgpa").innerHTML;
+      totalsems = 10;
+      semscompleted = 3;
+      semsremaining = totalsems - semscompleted - 1;
+    }
+
+    if (iscoe == ",") {
+      totalsems = document.getElementById("guesttotalsems").value;
+      semscompleted = document.getElementById("guestcompsems").value;
+      currentcgpa = document.getElementById("guestcgpa").value;
+      semsremaining = totalsems - semscompleted - 1;
+    }
+
     // to update maximum possible cgpa
     var formula =
       (currentcgpa * semscompleted + gpanow + semsremaining * 10) / totalsems;
