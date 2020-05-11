@@ -19,6 +19,6 @@ $dbname="cgpaa";
 
 $conn=mysqli_connect($dbservername,$dbusername,$dbpassword,$dbname);
 if($conn->error)
-    header("Location:../index.html?databaseconnectionerror");
+    header("Location:../index.php?databaseconnectionerror");
 
 

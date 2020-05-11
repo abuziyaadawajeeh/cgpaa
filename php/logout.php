@@ -2,4 +2,4 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location:../index.html?loggedout&".$_SESSION["username"]."");
+header("Location:../index.php?loggedout&");

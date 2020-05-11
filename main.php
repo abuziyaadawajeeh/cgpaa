@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
-  header("Location:../index.html?loginproperly");
+  header("Location:../index.php?loginproperly");
 ?>
 
 <!DOCTYPE html>
@@ -22,14 +22,17 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
           <p>Username : <?php
                     if($_SESSION["isguest"])
                       echo "guest";
+                    else if(isset($_SESSION["newusername"]))
+                            echo $_SESSION["newusername"];
                     else echo $_SESSION["username"];
                     ?></p>
           
           <p>Current CGPA : <div id="detailcgpa"><?php
                       if($_SESSION["isguest"])
                       echo "--";
-                    else
-                      echo $_SESSION["cgpa"];
+                    else if (isset($_SESSION["newcgpa"]))
+                      echo $_SESSION["newcgpa"];
+                     else  echo $_SESSION["cgpa"];
                     ?></div></p>
           
           <p>No. of registered students<span id="iscoe"><?php 
@@ -43,10 +46,8 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
           <p>No. of students between 8-8.5 : <?php echo $_SESSION["between8to8.5"]; ?></p>
           <p>No. of students below 8 : <?php echo $_SESSION["below8"]; ?></p>
           <p>Class Average CGPA : <?php echo $_SESSION["averagecgpa"];  ?></p>
-    
-      
-        
-      </div>
+          </div>
+
       <!-- flex item 2 for the service -->
         <div class="servicecont">
           <form action="" autocomplete="off">
@@ -61,11 +62,12 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
         
             <input id="cgpa" type="text" pattern="^((10)|([0-9])|([0-9]\.[0-9]{2})|([0-9].[0-9]))$"
               title="Enter a valid GPA Ex: 7, 8.9, 9.13" name="end" size="20" /><br /><br>
-            <div>Maximum Final CGPA possible for you : <div style="display:inline" id="maxcgpa"></div>
+            Maximum Final CGPA possible for you : <br> <br>
+            <input type="text" disabled size="20" id="maxcgpa">
           </form>
         </div>
       
-      </div>
+      
       
       <!-- flex item 3 for menu -->
         <div class="menucont">
@@ -76,30 +78,30 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
         <button id="vanishpassword" class="vanish">Change Password</button>
 
           <!-- to change cgpa -->
-        <form style="display: none" action="" class="editcgpa" autocomplete="off" method="POST">
+        <form style="display: none" action="php/changecgpa.php" class="editcgpa" autocomplete="off" method="POST">
           <p>Enter your current CGPA : </p>
           <input type="text" required name="cgpa" id="newcgpa" pattern="^(([0-9]).([0-9]{2}))|(10.00)" placeholder="8.55"
             title="Ex: 8.72 or 10.00" />
-          <button id="newcgpabutton" type="submit">Edit</button><br>
+          <button value="ssd" id="newcgpabutton" type="submit">Edit</button><br>
           <button id="cancelcgpa" >Cancel</button>
         </form>
 
         <!-- to change username -->
-        <form style="display: none" action="" class="editusername" autocomplete="off">
+        <form style="display: none" action="./php/changeusername.php" class="editusername" autocomplete="off" method="POST">
           <p>Enter your Username : </p>
           <input type="text" required maxlength="20" name="username" placeholder="wajeeh" />
-          <button type="submit">Edit</button><br>
+          <button value="sfds" type="submit">Edit</button><br>
           <button id="cancelusername">Cancel</button>
         </form>
 
         <!-- to change password -->
 
-        <form style="display: none" action="" class="editpassword" autocomplete="off">
+        <form style="display: none" action="php/changepassword.php" class="editpassword" method = "POST" autocomplete="off">
           <p>New Password : </p>
           <input type="password" name="password" id="password" maxlength="20" required class="labels" />
           <p>Confirm New Password : </p>
           <input type="password" name="password1" id="password1" maxlength="20" required class="labels" />
-          <button type="submit">Change</button><br>
+          <button value="sdfsd" type="submit">Change</button><br>
           <button id="cancelpassword">Cancel</button>
         </form>
 
@@ -111,17 +113,11 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
         <div>No. of Sems completed</div><br>
         <input id="guestcompsems" required type="text" size=17><br> <br>
         </form>
-
-
-        
-
-
-
         </div>
       
         
       
-      </div>
+      
       
     </div>
     <footer id="about">

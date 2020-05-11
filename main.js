@@ -21,11 +21,12 @@ $(document).ready(function () {
       (totalsems - semscompleted);
     document.getElementById("cgpa").value = "9.0";
 
-    prevmaxcgpa =
+    prevmaxcgpa = parseFloat(
       (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
-      totalsems;
+        totalsems
+    );
 
-    document.getElementById("maxcgpa").innerHTML = prevmaxcgpa;
+    document.getElementById("maxcgpa").value = prevmaxcgpa;
   } else if (iscoe == "") {
     currentcgpa = document.getElementById("detailcgpa").innerHTML;
     totalsems = 10;
@@ -40,11 +41,12 @@ $(document).ready(function () {
       (totalsems - semscompleted);
     document.getElementById("cgpa").value = "9.0";
 
-    prevmaxcgpa =
+    prevmaxcgpa = parseFloat(
       (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
-      totalsems;
+        totalsems
+    );
 
-    document.getElementById("maxcgpa").innerHTML = prevmaxcgpa;
+    document.getElementById("maxcgpa").value = prevmaxcgpa;
   } else if (iscoe == ",") {
     // to check if it is a guest user.
     $(".vanish").hide();
@@ -64,11 +66,12 @@ $(document).ready(function () {
       (totalsems - semscompleted);
     document.getElementById("cgpa").value = "9.0";
 
-    prevmaxcgpa =
+    prevmaxcgpa = parseFloat(
       (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
-      totalsems;
+        totalsems
+    );
 
-    document.getElementById("maxcgpa").innerHTML = prevmaxcgpa;
+    document.getElementById("maxcgpa").value = prevmaxcgpa;
   }
 
   $("#guestbutton").click(function () {
@@ -105,10 +108,17 @@ $(document).ready(function () {
 
     document.getElementById("gpanow").value = requiredgpas;
     document.getElementById("gpafuture").value = requiredgpas;
+
+    prevmaxcgpa = parseFloat(
+      (currentcgpa * semscompleted + (totalsems - semscompleted) * 10) /
+        totalsems
+    );
+
+    document.getElementById("maxcgpa").value = prevmaxcgpa;
   }
 
   function gpaset() {
-    var gpanow = document.getElementById("gpanow").value;
+    var gpanow = parseFloat(document.getElementById("gpanow").value);
     var cgpa = document.getElementById("cgpa").value;
     if (iscoe == ",") {
       totalsems = document.getElementById("guesttotalsems").value;
@@ -120,10 +130,15 @@ $(document).ready(function () {
       (cgpa * totalsems - currentcgpa * semscompleted - gpanow) / semsremaining;
 
     document.getElementById("gpafuture").value = requiredgpas;
-    prevmaxcgpa =
-      (currentcgpa * semscompleted + gpanow + semsremaining * 10) / totalsems;
+    // prevmaxcgpa =
+    //   (currentcgpa * semscompleted + gpanow + semsremaining * 10) / totalsems;
 
-    document.getElementById("maxcgpa").innerHTML = prevmaxcgpa;
+    // document.getElementById("maxcgpa").value = prevmaxcgpa;
+
+    prevmaxcgpa = parseFloat(
+      (currentcgpa * semscompleted + gpanow + semsremaining * 10) / totalsems
+    );
+    document.getElementById("maxcgpa").value = prevmaxcgpa;
   }
 
   function maximumcgpa() {
@@ -151,7 +166,7 @@ $(document).ready(function () {
     // to update maximum possible cgpa
     var formula =
       (currentcgpa * semscompleted + gpanow + semsremaining * 10) / totalsems;
-    document.getElementById("maxcgpa").innerText = formula;
+    document.getElementById("maxcgpa").value = formula;
   }
 
   // =============================================
@@ -225,18 +240,18 @@ $(document).ready(function () {
 
   // ajax code to handle edit details opertations
 
-  document.getElementById("newcgpabutton").addEventListener("click", ajaxcgpa);
+  // document.getElementById("newcgpabutton").addEventListener("click", ajaxcgpa);
 
-  function ajaxcgpa() {
-    var newcgpa = document.getElementById("newcgpa").value;
-    document.getElementsByClassName("footer").innerHTML = newcgpa;
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementsByClassName("footer").innerHTML = this.responseText;
-      }
-    };
-    xmlhttp.open("GET", "../php/updatedetails.php?q=" + newcgpa, true);
-    xmlhttp.send();
-  }
+  // function ajaxcgpa() {
+  //   var newcgpa = document.getElementById("newcgpa").value;
+  //   document.getElementsByClassName("footer").innerHTML = newcgpa;
+  //   var xmlhttp = new XMLHttpRequest();
+  //   xmlhttp.onreadystatechange = function () {
+  //     if (this.readyState == 4 && this.status == 200) {
+  //       document.getElementsByClassName("footer").innerHTML = this.responseText;
+  //     }
+  //   };
+  //   xmlhttp.open("GET", "../php/updatedetails.php?q=" + newcgpa, true);
+  //   xmlhttp.send();
+  // }
 });
