@@ -1,4 +1,16 @@
 $(document).ready(function () {
+  var message = document.getElementById("message").innerHTML;
+  if (message != "") {
+    $("#message").show();
+    setTimeout(hidemessage, 800);
+  }
+  function hidemessage() {
+    $("#message").hide();
+  }
+  if (message == "registrationsuccesful") {
+    $("#message").css("color", "green");
+  }
+
   $(".link1").click(rollup);
   $(".link2").click(rolldown);
 

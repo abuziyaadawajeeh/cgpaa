@@ -3,7 +3,10 @@
 }
 
 .divisions {
-  background-color: cadetblue;
+  background-image: url(../images/clearsky.jpeg);
+  background-position: top;
+  background-repeat: no-repeat;
+
   display: flex;
   flex-wrap: wrap-reverse;
   /* min-height: 80vh; */
@@ -38,9 +41,11 @@
   /* border: 1px solid rgb(3, 217, 255); */
   /* margin-bottom: 1rem; */
   padding: 2rem;
-  background-color: darkcyan;
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  box-shadow: 3px 3px 10px black, -3px -3px 10px black;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  /* box-shadow: 3px 3px 10px black, -3px -3px 10px black; */
 }
 .signup > *,
 .login > * {
@@ -101,4 +106,25 @@ a {
 }
 #header > a:link {
   color: rgb(153, 158, 158);
+}
+.headerlinks:link {
+  background-color: rgba(0, 116, 194, 0.9);
+  color: white;
+  padding: 0.4rem 0.4rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+}
+
+a:hover {
+  background-color: #c5c5c5;
+}
+#message {
+  background-color: rgba(255, 255, 255, 0.7);
+  font-family: "Times New Roman", Times, serif;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: red;
 }

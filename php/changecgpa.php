@@ -70,5 +70,5 @@ $_SESSION["newcgpa"]=$cgpa;
         $result=mysqli_query($conn,$query);
         $_SESSION["totalregistered"]=mysqli_num_rows($result);
 
-header("location:../main.php?message=changecgpasuccess");
+header("location:../main.php?message1=success");
 exit();

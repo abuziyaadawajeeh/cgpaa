@@ -5,6 +5,15 @@ $(document).ready(function () {
   var requiredgpas;
   var semsremaining;
 
+  var message = document.getElementById("message").innerHTML;
+  if (message != "") {
+    $("#message").show();
+    setTimeout(hidemessage, 400);
+  }
+  function hidemessage() {
+    $("#message").hide();
+  }
+
   currentcgpa = document.getElementById("detailcgpa").innerHTML;
   var iscoe = document.getElementById("iscoe").innerHTML;
 
@@ -51,6 +60,7 @@ $(document).ready(function () {
     // to check if it is a guest user.
     $(".vanish").hide();
     $("#guestbox").show();
+    $(".vanis").show();
     totalsems = 8;
     semscompleted = 3;
     currentcgpa = 8.9;
@@ -220,6 +230,7 @@ $(document).ready(function () {
       $(".vanish").fadeToggle();
     }, 100);
   }
+  // to show or hide logout button
 
   // to highlight if new passwords do not match
   $("#password1").keyup(function (event) {

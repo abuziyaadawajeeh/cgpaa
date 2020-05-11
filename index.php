@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,30 +11,12 @@
   </head>
   <body>
     <header id="header">
-      <div
-        style="
-          display: inline;
-          margin-left: 1rem;
-          color: rgb(153, 158, 158);
-
-          position: relative;
-          top: 0.5rem;
-        "
-      >
-        <a href="https://www.iiitdm.ac.in/" target="_BLANK">
-          IIITDM KANCHIPURAM
+        <a class="headerlinks" href="https://www.iiitdm.ac.in/" target="_BLANK">
+          IIITDM Kanchipuram
         </a>
-      </div>
-      <div
-        style="
-          display: inline;
-          margin-left: 1rem;
-          position: relative;
-          top: 0.5rem;
-        "
-      >
-        <a href="#down">ABOUT CGPAA</a>
-      </div>
+      
+        <a class="headerlinks" href="#down">ABOUT</a>
+  
     </header>
     <div class="divisions">
       <div class="one">
@@ -63,6 +48,7 @@
             size="22"
             required
             name="email"
+            id="loginid"
           /><br /><br />
           <h4 class="labels">Password</h4>
           <br />
@@ -76,6 +62,10 @@
             Login
           </button>
           <br /><br />
+          <div style="display: none" id="message"><?php if(isset($_GET["message"]))
+                                  echo $_GET["message"]; ?>
+          
+          </div> <br>
           <a href="" class="links">Forgot my password..</a><br /><br />
           <a class="links" href="./php/login.php">Login as Guest</a>
         </form>
@@ -98,6 +88,7 @@
             pattern="((coe18b)|(ced18i))([0-9]{3})(@iiitdm.ac.in)"
             title="your IIITDM mail id in lowercase"
             value="coe18b035@iiitdm.ac.in"
+            id="signinid"
           /><br /><br />
           <h4 class="labels">Username</h4>
           <br />
@@ -107,6 +98,7 @@
             maxlength="20"
             name="username"
             placeholder="wajeeh"
+            id="signinusername"
           /><br /><br />
           <h4 class="labels">Current CGPA</h4>
           <br />
@@ -117,6 +109,7 @@
             pattern="^(([0-9]).([0-9]{2}))|(10.00)"
             placeholder="8.55"
             title="Ex: 8.72 or 10.00"
+            id="signincgpa"
           /><br /><br />
           <h4 class="labels">Password</h4>
           <br />

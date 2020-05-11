@@ -29,6 +29,6 @@ $result = mysqli_store_result($stmt);
 //     exit();
 // }
 $_SESSION["username"] = $username; 
-header("location:../main.php?message=usernamechangesuccess");
+header("location:../main.php?message1=success");
 exit();
 

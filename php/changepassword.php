@@ -32,6 +32,6 @@ if(!mysqli_stmt_prepare($stmt, $query)){
 mysqli_stmt_bind_param($stmt, "ss", $hashedpassword, $email);
 mysqli_stmt_execute($stmt);
 
-header("location:../main.php?message=changepasswordsuccess");
+header("location:../main.php?message1=success");
 exit();
 

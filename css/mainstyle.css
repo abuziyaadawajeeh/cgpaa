@@ -10,8 +10,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  min-height: 100vh;
-  background-color: rgb(0, 124, 103);
+  min-height: calc(100vh - 2rem);
+  background-image: url(../images/redsky.jpeg);
+  background-repeat: repeat-x;
+  background-position: bottom;
   width: 100vw;
 }
 .service {
@@ -54,7 +56,7 @@ button {
   padding: 2rem 0 2rem;
   margin: 2rem 1rem 2rem;
   border-radius: 0.5rem;
-  background-color: rgb(3, 99, 83);
+  background-color: rgba(99, 3, 3, 0.6);
   box-shadow: 3px 3px 10px black, -3px -3px 10px black;
 }
 
@@ -149,6 +151,8 @@ button {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 #about {
@@ -174,4 +178,62 @@ a {
 }
 #maxcgpa {
   background-color: gray;
+}
+.headerlinks:link {
+  background-color: black;
+  color: white;
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+}
+.headerlinks {
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+a:hover,
+a:active {
+  background-color: #630000;
+}
+#header {
+  background-color: rgb(0, 0, 0);
+  position: fixed;
+  height: 2rem;
+  width: 100vw;
+  box-shadow: 3px 3px 10px black, -3px -3px 10px black;
+}
+.vanis {
+  display: inline;
+}
+.vanis > button {
+  background-color: black;
+  color: white;
+  width: 3rem;
+  border-color: black;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+button {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  height: 2rem;
+  padding-bottom: 0.3rem;
+}
+#message {
+  background-color: rgb(255, 255, 255);
+  font-family: "Times New Roman", Times, serif;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: rgb(0, 170, 57);
+  font-weight: bold;
 }

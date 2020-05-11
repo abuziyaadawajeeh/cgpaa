@@ -15,6 +15,14 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
     <script src="main.js"></script>
   </head>
   <body>
+     <header id="header">
+        <div class="headerlinks"> CGPAA</div>
+      
+        <a class="headerlinks" href="#down">ABOUT</a>
+
+        <form class="vanis" style="display: none" action="./php/logout.php"><button type="submit"  > LOGOUT</button></form>
+  
+    </header>
     <div class="flexbox">
       <!-- flex item 1 for the details of the class -->
       
@@ -34,6 +42,7 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
                       echo $_SESSION["newcgpa"];
                      else  echo $_SESSION["cgpa"];
                     ?></div></p>
+          <p>IIITDM COE/CED 2018 Statistics</p>
           
           <p>No. of registered students<span id="iscoe"><?php 
             if($_SESSION["isguest"])
@@ -72,6 +81,10 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["isguest"]) )
       <!-- flex item 3 for menu -->
         <div class="menucont">
         <!-- menu with options to edit cgpa, username etc.  -->
+        <div id="message" style="display: none"><?php if(isset($_GET["message1"]))
+                                  echo $_GET["message1"]; ?>
+        
+        </div><br>
         <form class="vanish" action="./php/logout.php"><button type="submit" id="#logoutbutton" > Logout</button></form>
         <button  class="vanish" id="vanishcgpa">Edit Current CGPA</button><br>
         <button id="vanishusername" class="vanish">Change Username</button><br>

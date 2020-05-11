@@ -11,7 +11,7 @@ $cgpa=$_POST["cgpa"];
 // to connect to the db
 include_once ("conn.php");
 if($conn->connect_error){
-        header("Location:../index.php?connectiontodbfailed1");
+        header("Location:../index.php?message=connectiontodbfailed1");
         exit();
 }
 
@@ -35,13 +35,13 @@ mysqli_stmt_store_result($stmt2);
 $count = mysqli_stmt_num_rows($stmt2);
 
 if($count>0){
-    header("Location:../index.php?emailalreadyregistered");
+    header("Location:../index.php?message=emailalreadyregistered");
     exit();
 }
 mysqli_stmt_close($stmt2);
 
 if($password != $password1){
-    header("Location:../index.php?passwordsdonotmatch");
+    header("Location:../index.php?message=passwordsdonotmatch");
     exit();
 }
 
@@ -61,7 +61,7 @@ mysqli_stmt_bind_param($stmt,"ssds",$email,$username,$cgpa,$hashedpassword);
 mysqli_stmt_execute($stmt);
 
 if(!$conn->connect_error)
-    header("Location:../index.php?registrationsuccesful");
+    header("Location:../index.php?message=registrationsuccesful");
 
 
 //however email verification feature is left. 

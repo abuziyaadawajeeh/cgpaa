@@ -28,12 +28,21 @@ mysqli_stmt_execute($stmt);
 $result=mysqli_stmt_get_result($stmt);
 $row=mysqli_fetch_assoc($result);
 mysqli_stmt_close($stmt);
-if(!$row)
-    header("Location:../index.php?registerfirst");
+if(!$row){
+    header("Location:../index.php?message=registerfirst");
+
+    exit();
+
+}
+
 else
 {
-    if(!password_verify($password,$row["password"]))
-        header("Location:../index.php?incorrectpassword");
+    if(!password_verify($password,$row["password"])){
+        header("Location:../index.php?message=incorrectpassword");
+    
+        exit();
+
+    }
     else{
         session_start();
         $_SESSION["username"]=$row["username"];
